@@ -7,198 +7,35 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>گنجینه ریاضی ششم</title>
+<title>گنجینه حجم</title>
 
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:tahoma;
-}
-
-body{
-
-height:100vh;
-
-background:linear-gradient(#8fd3ff,#dff8ff);
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-overflow:hidden;
-
-}
-
-/* کلاس */
-
-#classroom{
-
-width:100%;
-
-height:100%;
-
-background:url("classroom.jpg");
-
-background-size:cover;
-
-background-position:center;
-
-position:relative;
-
-}
-
-/* کادر ورود */
-
-#startBox{
-
-width:420px;
-
-max-width:90%;
-
-background:white;
-
-padding:30px;
-
-border-radius:25px;
-
-box-shadow:0 10px 25px rgba(0,0,0,.25);
-
-position:absolute;
-
-top:50%;
-
-left:50%;
-
-transform:translate(-50%,-50%);
-
-text-align:center;
-
-}
-
-h1{
-
-color:#0b63b6;
-
-margin-bottom:20px;
-
-}
-
-input{
-
-width:100%;
-
-padding:15px;
-
-font-size:20px;
-
-border-radius:15px;
-
-border:none;
-
-background:#f2f2f2;
-
-margin-top:20px;
-
-margin-bottom:25px;
-
-}
-
-button{
-
-background:#1fa34a;
-
-color:white;
-
-font-size:22px;
-
-padding:15px 35px;
-
-border:none;
-
-border-radius:15px;
-
-cursor:pointer;
-
-transition:.3s;
-
-}
-
-button:hover{
-
-transform:scale(1.05);
-
-background:#17873c;
-
-}
-
-#teacher{
-
-position:absolute;
-
-bottom:0;
-
-left:-350px;
-
-width:280px;
-
-transition:3s;
-
-}
-
-#teacherText{
-
-position:absolute;
-
-bottom:330px;
-
-left:60px;
-
-background:white;
-
-padding:20px;
-
-border-radius:20px;
-
-display:none;
-
-width:320px;
-
-font-size:22px;
-
-line-height:40px;
-
-box-shadow:0 5px 15px rgba(0,0,0,.2);
-
-}
-
-</style>
+<link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-<div id="classroom">
+<div class="container">
 
-<div id="startBox">
+<h1>🏆 گنجینه حجم</h1>
 
-<h1>
+<h2>با خانم هراتی</h2>
 
-🎮 گنجینه ریاضی ششم
-
-</h1>
+<div id="start">
 
 <p>
 
-نام خود را وارد کن
+به بازی آموزشی حجم خوش آمدی.
 
 </p>
 
-<input id="studentName">
+<input
+
+type="text"
+
+id="playerName"
+
+placeholder="نام خود را وارد کن">
 
 <button onclick="startGame()">
 
@@ -208,55 +45,47 @@ box-shadow:0 5px 15px rgba(0,0,0,.2);
 
 </div>
 
-<img id="teacher"
+<div id="game" style="display:none;">
 
-src="teacher.png">
+<h3 id="welcome"></h3>
 
-<div id="teacherText">
+<p id="teacher">
 
-سلام دوست خوبم 🌸
+👩‍🏫
 
-<br><br>
+سلام!
 
 من خانم هراتی هستم.
 
-<br><br>
+امروز با هم وارد گنجینه حجم می‌شویم.
 
-امروز با هم گنجینه حجم را پیدا می‌کنیم.
+</p>
+
+<div id="questionBox">
+
+</div>
+
+<div id="answers">
+
+</div>
+
+<p>
+
+⭐ امتیاز:
+
+<span id="score">
+
+0
+
+</span>
+
+</p>
 
 </div>
 
 </div>
 
-<script>
-
-function startGame(){
-
-let name=document.getElementById("studentName").value;
-
-if(name==""){
-
-alert("لطفاً نام خود را وارد کن");
-
-return;
-
-}
-
-document.getElementById("startBox").style.display="none";
-
-let teacher=document.getElementById("teacher");
-
-teacher.style.left="40px";
-
-setTimeout(function(){
-
-document.getElementById("teacherText").style.display="block";
-
-},2500);
-
-}
-
-</script>
+<script src="script.js"></script>
 
 </body>
 
