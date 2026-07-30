@@ -1,4 +1,17 @@
 body{
+    margin:0;
+    font-family:tahoma;
+    direction:rtl;
+    background-image:url("classroom.png");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
 margin:0;
 padding:0;
 direction:rtl;
@@ -16,15 +29,15 @@ min-height:100vh;
 }
 }
 
-.container{
-width:90%;
-max-width:700px;
-margin:30px auto;
-background:white;
-padding:25px;
-border-radius:20px;
-box-shadow:0 0 20px rgba(0,0,0,.2);
-text-align:center;
+.container{.container{
+    width:90%;
+    max-width:700px;
+    background:rgba(255,255,255,0.92);
+    border-radius:20px;
+    padding:25px;
+    box-shadow:0 0 20px rgba(0,0,0,.3);
+    text-align:center;
+}
 }
 
 h1{
