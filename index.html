@@ -2,86 +2,82 @@
 <html lang="fa" dir="rtl">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏆 گنجینه حجم</title>
 
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>گنجینه حجم</title>
-
-<link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <div class="container">
 
-<h1>🏆 گنجینه حجم</h1>
+    <h1>🏆 گنجینه حجم</h1>
 
-<h2>با خانم هراتی</h2>
+    <h2>با خانم هراتی</h2>
 
-<div id="start">
+    <div id="startPage">
 
-<p>
+        <p class="welcome">
 
-به بازی آموزشی حجم خوش آمدی.
+            به بازی آموزشی حجم خوش آمدی.
 
-</p>
+        </p>
 
-<input
+        <input
+            id="playerName"
+            type="text"
+            placeholder="نام خود را وارد کن">
 
-type="text"
+        <br>
 
-id="playerName"
+        <button id="startBtn">
 
-placeholder="نام خود را وارد کن">
+            شروع بازی
 
-<button onclick="startGame()">
+        </button>
 
-شروع بازی
+    </div>
 
-</button>
 
-</div>
+    <div id="gamePage" style="display:none;">
 
-<div id="game" style="display:none;">
+        <h3 id="helloStudent"></h3>
 
-<h3 id="welcome"></h3>
+        <div class="teacherBox">
 
-<p id="teacher">
+            👩‍🏫 خانم هراتی:
 
-👩‍🏫
+            <br><br>
 
-سلام!
+            به گنجینه حجم خوش آمدی.
 
-من خانم هراتی هستم.
+            به سؤال‌ها پاسخ بده و ستاره جمع کن.
 
-امروز با هم وارد گنجینه حجم می‌شویم.
+        </div>
 
-</p>
+        <div id="questionBox">
 
-<div id="questionBox">
+        </div>
 
-</div>
+        <div id="answerBox">
 
-<div id="answers">
+        </div>
 
-</div>
+        <div class="scoreBox">
 
-<p>
+            ⭐ امتیاز :
 
-⭐ امتیاز:
+            <span id="score">
 
-<span id="score">
+                0
 
-0
+            </span>
 
-</span>
+        </div>
 
-</p>
-
-</div>
+    </div>
 
 </div>
 
