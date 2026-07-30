@@ -90,4 +90,11 @@ current++;
 
 showQuestion();
 
+}} else {
+        alert("❌ پاسخ نادرست!");
+    }
+
+    current++;
+
+    showQuestion();
 }
