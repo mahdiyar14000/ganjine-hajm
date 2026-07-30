@@ -1,100 +1,159 @@
 const questions = [
 {
-q:"حجم مکعبی با ضلع ۴ سانتی متر چند است؟",
-a:["16","64","32","8"],
-c:1
+question:"حجم مکعبی با ضلع 5 سانتی متر چند است؟",
+answers:["25","75","125","150"],
+correct:2
 },
 {
-q:"حجم منشوری با طول ۵، عرض ۳ و ارتفاع ۲ سانتی متر؟",
-a:["30","20","15","10"],
-c:0
+question:"حجم مکعب مستطیل با طول 8، عرض 4 و ارتفاع 3 سانتی متر چند است؟",
+answers:["96","84","72","48"],
+correct:0
 },
 {
-q:"حجم استوانه از چه رابطه ای به دست می آید؟",
-a:["مساحت قاعده × ارتفاع","محیط × ارتفاع","طول × عرض","قطر × ارتفاع"],
-c:0
+question:"اگر π=3 باشد، حجم استوانه ای با شعاع 3 و ارتفاع 7 چند است؟",
+answers:["63","126","189","72"],
+correct:2
 },
 {
-q:"اگر حجم جسمی ۴۸ و مساحت قاعده آن ۸ باشد، ارتفاع چند است؟",
-a:["۴","۶","۸","۱۰"],
-c:1
+question:"فرمول حجم مکعب چیست؟",
+answers:[
+"ضلع × 4",
+"ضلع × ضلع",
+"ضلع × ضلع × ضلع",
+"محیط × ارتفاع"
+],
+correct:2
 },
 {
-q:"حجم مکعب مستطیل با ابعاد ۱۰،۲ و۳؟",
-a:["50","60","30","20"],
-c:1
+question:"حجم مکعبی 216 سانتی متر مکعب است. طول ضلع آن چند سانتی متر است؟",
+answers:["4","5","6","8"],
+correct:2
 }
 ];
 
+let currentQuestion=0;
 let score=0;
-let current=0;
 
-function startGame(){
+const startBtn=document.getElementById("startBtn");
+const startPage=document.getElementById("startPage");
+const gamePage=document.getElementById("gamePage");
 
-let name=document.getElementById("studentName").value;
+const playerName=document.getElementById("playerName");
 
-if(name==""){
-alert("نام خود را وارد کن.");
+const helloStudent=document.getElementById("helloStudent");
+
+const questionBox=document.getElementById("questionBox");
+
+const answerBox=document.getElementById("answerBox");
+
+const scoreBox=document.getElementById("score");
+
+startBtn.onclick=function(){
+
+if(playerName.value.trim()==""){
+
+alert("لطفا نام خود را وارد کن.");
+
 return;
-}
-
-document.getElementById("start").style.display="none";
-
-showQuestion();
 
 }
+
+helloStudent.innerHTML="سلام "+playerName.value+" 🌸";
+
+startPage.style.display="none";
+
+gamePage.style.display="block";
+        showQuestion();
+
+};
 
 function showQuestion(){
 
-if(current>=questions.length){
+questionBox.innerHTML=questions[currentQuestion].question;
 
-document.getElementById("questionBox").innerHTML="🎉 آفرین!";
+answerBox.innerHTML="";
 
-document.getElementById("answers").innerHTML="امتیاز نهایی: "+score+" از "+questions.length;
+for(let i=0;i<questions[currentQuestion].answers.length;i++){
 
-return;
+const btn=document.createElement("button");
 
-}
+btn.className="answerBtn";
 
-document.getElementById("questionBox").innerHTML=questions[current].q;
+btn.innerHTML=questions[currentQuestion].answers[i];
 
-let html="";
+btn.onclick=function(){
 
-for(let i=0;i<4;i++){
+checkAnswer(i);
 
-html+="<button onclick='check("+i+")'>"+questions[current].a[i]+"</button>";
+};
 
-}
-
-document.getElementById("answers").innerHTML=html;
-
-document.getElementById("score").innerHTML="امتیاز: "+score;
+answerBox.appendChild(btn);
 
 }
 
-function check(n){
+scoreBox.innerHTML=score;
 
-if(n==questions[current].c){
+}
+
+function checkAnswer(answer){
+
+const correct=questions[currentQuestion].correct;
+
+if(answer===correct){
 
 score++;
 
-alert("✅ آفرین! پاسخ درست است.");
+alert("✅ آفرین! پاسخ درست بود.");
 
 }else{
 
-alert("❌ پاسخ درست نبود.");
+alert("❌ پاسخ درست گزینه "
++(correct+1)+" بود.");
 
 }
 
-current++;
+currentQuestion++;
+        if(currentQuestion<questions.length){
 
 showQuestion();
 
-}} else {
-        alert("❌ پاسخ نادرست!");
-    }
+}else{
 
-    current++;
+questionBox.innerHTML="🏆 تبریک "+playerName.value;
 
-    showQuestion();
+answerBox.innerHTML="";
+
+let message=document.createElement("div");
+
+message.className="finish";
+
+message.innerHTML=
+"⭐ امتیاز نهایی تو : "
++score+
+" از "
++questions.length+
+"<br><br>";
+
+if(score==questions.length){
+
+message.innerHTML+="🥇 عالی بود! تو قهرمان گنجینه حجم شدی.";
+
+}else if(score>=4){
+
+message.innerHTML+="🥈 خیلی خوب بود! فقط کمی تمرین بیشتر.";
+
+}else if(score>=2){
+
+message.innerHTML+="🥉 آفرین، ولی بهتره دوباره بازی کنی.";
+
+}else{
+
+message.innerHTML+="📚 دوباره تلاش کن؛ مطمئنم دفعه بعد بهتر می‌شوی.";
+
+}
+
+answerBox.appendChild(message);
+
+}
+
 }
